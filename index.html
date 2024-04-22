@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stránka věnovaná filmům">
+    <title>Filmy</title>
+    <!-- Importování CSS souboru -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Metadata pro sociální sítě -->
+    <meta property="og:title" content="Filmy">
+    <meta property="og:description" content="Stránka věnovaná filmům">
+    <!-- Mikrodata -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "url": "http://www.example.com",
+            "logo": "http://www.example.com/logo.jpg",
+            "contactPoint": [{
+                "@type": "ContactPoint",
+                "telephone": "+1-401-555-1212",
+                "contactType": "customer service"
+            }]
+        }
+    </script>
+    <!-- Odkaz na XSLT soubor -->
+    <link rel="stylesheet" type="text/xsl" href="transformation.xslt">
+</head>
+<body>
+    <!-- Hlavička -->
+    <header>
+        <h1>Vítejte na naší filmové stránce</h1>
+        <!-- Navigace -->
+        <nav>
+            <ul>
+                <li><a href="#">Domů</a></li>
+                <li><a href="#">Žánry</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Obsah -->
+    <main>
+        <!-- Seznam populárních filmů (zobrazí se po aplikaci transformace) -->
+        <div id="movies"></div>
+
+        <!-- Odkazy na sociální sítě -->
+        <aside id="social-links">
+            <h2>Sledujte nás</h2>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </aside>
+        
+        <!-- O nás -->
+        <section id="about-us">
+            <h2>O nás</h2>
+            <p>Stránka věnovaná filmům, kde najdete informace o nejnovějších filmech, recenze a mnoho dalšího.</p>
+        </section>
+
+        <!-- Fat footer -->
+        <footer id="fat-footer">
+            <p>&copy; 2024 Filmy.cz. Všechna práva vyhrazena.</p>
+        </footer>
+    </main>
+
+    <!-- Vložení XML dat a provedení transformace -->
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var xml = this.responseXML;
+                var xsl = document.querySelector('link[href="transformation.xslt"]').sheet;
+                var processor = new XSLTProcessor();
+                processor.importStylesheet(xsl);
+                var result = processor.transformToFragment(xml, document);
+                document.getElementById("movies").appendChild(result);
+            }
+        };
+        xmlhttp.open("GET", "data.xml", true);
+        xmlhttp.send();
+    </script>
+</body>
+</html>
+

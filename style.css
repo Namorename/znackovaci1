@@ -1,0 +1,88 @@
+/* Resetování výchozích stylů pro lepší konzistenci mezi prohlížeči */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Základní styly pro celou stránku */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 20px; /* Vzdálenost nad hlavičkou */
+}
+
+/* Hlavička */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigace */
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Obsah */
+main {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Rozdělení obsahu na dvě části */
+    gap: 20px; /* Vzdálenost mezi částmi obsahu */
+}
+
+/* Seznam populárních filmů */
+#popular-movies {
+    background-color: #fff;
+    padding: 20px;
+}
+
+#popular-movies article {
+    margin-bottom: 20px;
+}
+
+#popular-movies h3 {
+    color: #333;
+}
+
+/* Odkazy na sociální sítě */
+#social-links {
+    background-color: #fff;
+    padding: 20px;
+}
+
+#social-links ul {
+    list-style-type: none;
+}
+
+#social-links ul li {
+    margin-bottom: 10px;
+}
+
+/* O nás */
+#about-us {
+    background-color: #fff;
+    padding: 20px;
+}
+
+/* Fat footer */
+#fat-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
